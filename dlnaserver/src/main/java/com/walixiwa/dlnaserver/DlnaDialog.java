@@ -57,13 +57,10 @@ public class DlnaDialog extends AlertDialog.Builder {
     private MultiTypeAdapter adapter = new MultiTypeAdapter();
 
     private Context context;
-
-
-    private String title;
     private String url;
 
     private List<Object> items = new ArrayList<>();
-    private TextView tv_Title;
+
     private LinearLayout ll_find;
     private ProgressBar loading;
     private TextView tv_info;
@@ -73,7 +70,6 @@ public class DlnaDialog extends AlertDialog.Builder {
         super(context, R.style.MyAlertDialogStyle);
         this.context = context;
         View view = View.inflate(context, R.layout.dlna_server_dialog, null);
-        tv_Title = view.findViewById(R.id.tv_title);
         this.setView(view);
 
         DlnaItemBinder binder = new DlnaItemBinder();
@@ -89,7 +85,7 @@ public class DlnaDialog extends AlertDialog.Builder {
         binder.setOnItemClickListener(new DlnaItemBinder.OnItemClickListener() {
             @Override
             public void onItemClick(DeviceModel display) {
-                ll_find.setVisibility(View.VISIBLE);
+                //ll_find.setVisibility(View.VISIBLE);
                 tv_info.setText("正在投送到设备...");
                 DlnaCtrlUtil.startUrl(display, upnpService, url.replace("127.0.0.1", getLANAddress()), new DlnaCtrlUtil.OnPlayCallBack() {
                     @Override
@@ -97,8 +93,8 @@ public class DlnaDialog extends AlertDialog.Builder {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                ll_find.setVisibility(View.GONE);
-                                Toast.makeText(context, "已投送到设备", Toast.LENGTH_SHORT).show();
+                                //ll_find.setVisibility(View.GONE);
+                                tv_info.setText("已投送到设备...");
                             }
                         });
                     }
@@ -118,11 +114,6 @@ public class DlnaDialog extends AlertDialog.Builder {
     }
 
 
-    public DlnaDialog setTitle(String title) {
-        this.title = title;
-        this.tv_Title.setText(title);
-        return this;
-    }
 
     public DlnaDialog setUrl(String url) {
         this.url = url;
@@ -219,8 +210,8 @@ public class DlnaDialog extends AlertDialog.Builder {
                     }
                     adapter.notifyDataSetChanged();
 
-                    tv_info.setText("正在发现设备...");
-                    ll_find.setVisibility(items.size() == 0 ? View.VISIBLE : View.GONE);
+                    tv_info.setText("实时发现局域网设备...");
+                    //ll_find.setVisibility(items.size() == 0 ? View.VISIBLE : View.GONE);
                 }
             });
         }

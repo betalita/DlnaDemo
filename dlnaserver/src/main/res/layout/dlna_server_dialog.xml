@@ -6,24 +6,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="局域网投屏"
-        android:textColor="#222222"
-        android:textSize="16sp" />
-
     <LinearLayout
         android:id="@+id/ll_find"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:padding="10dp">
 
         <ProgressBar
             android:id="@+id/loading"
@@ -32,16 +21,16 @@
 
         <TextView
             android:id="@+id/tv_info"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:paddingRight="5dp"
             android:paddingBottom="10dp"
-            android:text="正在发现设备..."
+            android:text="实时发现局域网设备..."
             android:textColor="#333333"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
 
 
     </LinearLayout>
